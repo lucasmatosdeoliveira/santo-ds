@@ -1,0 +1,78 @@
+import { Meta } from "@storybook/blocks";
+import { SwatchGrid } from "../../components/SwatchGrid";
+
+<Meta title="Foundations/Colors" />
+
+# Colors
+
+Três camadas: **primitive** (valores hex brutos), **accent** (famílias de marca: primary/success/warning/danger) e **semantic** (trocam de valor em light/dark).
+
+A troca de tema é feita com `data-theme="dark"` no root — você pode ver isso em ação no toggle de tema do Storybook (canto superior direito).
+
+---
+
+## Primitive — Neutral
+
+Escala neutra usada como base para backgrounds, textos e borders.
+
+<SwatchGrid prefix="sds-color-primitive-neutral-" />
+
+## Primitive — Blue
+
+<SwatchGrid prefix="sds-color-primitive-blue-" />
+
+## Primitive — Green
+
+<SwatchGrid prefix="sds-color-primitive-green-" />
+
+## Primitive — Yellow
+
+<SwatchGrid prefix="sds-color-primitive-yellow-" />
+
+## Primitive — Red
+
+<SwatchGrid prefix="sds-color-primitive-red-" />
+
+---
+
+## Accent — Primary
+
+A paleta de marca. Ramp completo + variações alpha para overlays.
+
+<SwatchGrid prefix="sds-color-accent-primary-" />
+
+## Accent — Success
+
+<SwatchGrid prefix="sds-color-accent-success-" />
+
+## Accent — Warning
+
+<SwatchGrid prefix="sds-color-accent-warning-" />
+
+## Accent — Danger
+
+<SwatchGrid prefix="sds-color-accent-danger-" />
+
+---
+
+## Semantic — Background
+
+Tokens semânticos assumem valores diferentes por tema (light/dark). Troque o tema no toolbar acima pra ver o efeito.
+
+<SwatchGrid prefix="sds-color-semantic-background-" />
+
+## Semantic — Border
+
+<SwatchGrid prefix="sds-color-semantic-border-" />
+
+## Semantic — Font
+
+<SwatchGrid prefix="sds-color-semantic-font-" />
+
+## Semantic — Icon
+
+<SwatchGrid prefix="sds-color-semantic-icon-" />
+
+## Semantic — Static
+
+<SwatchGrid prefix="sds-color-semantic-static-" />

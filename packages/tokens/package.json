@@ -1,0 +1,30 @@
+{
+  "name": "@santo-ds/tokens",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Design tokens for SantoDS — generated from Figma via Style Dictionary",
+  "type": "module",
+  "main": "./dist/js/tokens.js",
+  "types": "./dist/ts/tokens.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/ts/tokens.d.ts",
+      "import": "./dist/js/tokens.js"
+    },
+    "./css": "./dist/css/tokens.css",
+    "./tailwind": "./dist/tailwind/preset.js",
+    "./raw": "./design-tokens.json"
+  },
+  "files": [
+    "dist",
+    "design-tokens.json"
+  ],
+  "scripts": {
+    "preprocess": "node scripts/preprocess.mjs",
+    "build": "pnpm preprocess && node scripts/build.mjs",
+    "watch": "node scripts/build.mjs --watch"
+  },
+  "dependencies": {
+    "style-dictionary": "^4.3.0"
+  }
+}

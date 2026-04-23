@@ -1,0 +1,16 @@
+@import "@santo-ds/tokens/css";
+
+html,
+body {
+  font-family: var(--sds-typography-paragraph-md-font-family, "Poppins"), ui-sans-serif, system-ui, sans-serif;
+  color: var(--sds-color-semantic-font-default-main);
+  background: var(--sds-color-semantic-background-default-main);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+}

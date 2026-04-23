@@ -1,0 +1,28 @@
+{
+  "name": "santo-ds",
+  "private": true,
+  "version": "0.0.0",
+  "description": "SantoDS — design system built from Figma variables",
+  "packageManager": "pnpm@10.33.1",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "tokens:build": "pnpm --filter @santo-ds/tokens build",
+    "ui:build": "pnpm --filter @santo-ds/ui build",
+    "storybook": "pnpm --filter @santo-ds/docs storybook",
+    "storybook:build": "pnpm --filter @santo-ds/docs build",
+    "build": "pnpm -r build",
+    "clean": "pnpm -r exec rm -rf dist node_modules .turbo"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "prettier": "^3.3.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "style-dictionary"
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import { Slider } from "@santo-ds/ui";
+
+const meta = {
+  title: "Components/Slider",
+  component: Slider,
+  tags: ["autodocs"],
+  args: { defaultValue: [40], max: 100, step: 1, className: "w-80" },
+} satisfies Meta<typeof Slider>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {};
+export const Range: Story = { args: { defaultValue: [20, 80] } };

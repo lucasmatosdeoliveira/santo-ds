@@ -1,0 +1,21 @@
+import { Meta } from "@storybook/blocks";
+import { ScaleGrid } from "../../components/ScaleGrid";
+
+<Meta title="Foundations/Spacing" />
+
+# Spacing
+
+Escala de espaçamento / sizing. Use em `padding`, `margin`, `gap`, `width`, `height`.
+
+No Tailwind: `p-4`, `gap-16`, etc. — os valores mapeiam pros tokens `--sds-size-*`.
+
+<ScaleGrid
+  prefix="sds-size-"
+  numericSort
+  render={(value) => (
+    <div
+      className="bg-accent"
+      style={{ width: value, height: "16px", borderRadius: "2px" }}
+    />
+  )}
+/>

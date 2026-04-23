@@ -1,0 +1,35 @@
+{
+  "name": "@santo-ds/docs",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Storybook documentation for SantoDS",
+  "type": "module",
+  "scripts": {
+    "storybook": "storybook dev -p 6006 --no-open",
+    "build": "storybook build -o storybook-static",
+    "preview": "pnpm build && npx http-server storybook-static -p 6007"
+  },
+  "dependencies": {
+    "@santo-ds/tokens": "workspace:*",
+    "@santo-ds/ui": "workspace:*",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.4.5",
+    "@storybook/addon-themes": "^8.4.5",
+    "@storybook/blocks": "^8.4.5",
+    "@storybook/react": "^8.4.5",
+    "@storybook/react-vite": "^8.4.5",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "storybook": "^8.4.5",
+    "tailwindcss": "^3.4.15",
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11"
+  }
+}

@@ -1,0 +1,22 @@
+import { Meta } from "@storybook/blocks";
+import { ScaleGrid } from "../../components/ScaleGrid";
+
+<Meta title="Foundations/Opacity" />
+
+# Opacity
+
+Níveis de opacidade (0.08 → 0.96). Use em overlays, disabled states, e máscaras.
+
+<ScaleGrid
+  prefix="sds-opacity-"
+  numericSort
+  render={(value) => (
+    <div className="flex items-center gap-2">
+      <div className="h-10 w-10 rounded-4 bg-background-soft" />
+      <div
+        className="h-10 w-10 rounded-4 bg-accent"
+        style={{ opacity: value }}
+      />
+    </div>
+  )}
+/>

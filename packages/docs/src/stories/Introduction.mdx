@@ -1,0 +1,48 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introduction" />
+
+# SantoDS
+
+Design system gerado a partir de variables do Figma, com pipeline via Style Dictionary e
+documentação viva no Storybook.
+
+## Como está organizado
+
+| Pacote | Descrição |
+| --- | --- |
+| `@santo-ds/tokens` | Source-of-truth dos design tokens (extraídos do Figma) em CSS, JS/TS e Tailwind preset. |
+| `@santo-ds/ui` | Componentes React com base shadcn/Radix, estilizados com os tokens. |
+| `@santo-ds/docs` | Este Storybook. |
+
+## Fluxo de atualização de tokens
+
+1. Edite as Variables no arquivo Figma **Santo DS — Foundation**.
+2. Exporte via plugin **Design Tokens** (Lukas Oppermann) → salve em `design-tokens.json` na raiz.
+3. `pnpm tokens:build` regenera CSS, JS, TS e preset Tailwind.
+4. Commite as mudanças — consumidores (`@santo-ds/ui`, `@santo-ds/docs`) puxam via workspace.
+
+## Theming
+
+A troca light/dark acontece via `data-theme` no elemento root:
+
+```html
+<html data-theme="dark">
+  ...
+</html>
+```
+
+Tokens semânticos (`--sds-color-semantic-*`) têm valores diferentes em `:root` (light) e
+`[data-theme="dark"]`. Tokens base (primitive, accent, sizing, radius, etc.) são mode-agnósticos.
+
+## Convenção de nomes
+
+Todas as CSS vars seguem o padrão `--sds-<categoria>-<subcategoria>-<variante>`:
+
+- `--sds-color-primitive-neutral-500`
+- `--sds-color-accent-primary-base`
+- `--sds-color-semantic-background-default-soft`
+- `--sds-size-16`
+- `--sds-border-radius-8`
+- `--sds-effect-shadow-md`
+- `--sds-typography-headline-lg-font-size`

@@ -1,0 +1,32 @@
+import { Meta } from "@storybook/blocks";
+import { ScaleGrid } from "../../components/ScaleGrid";
+
+<Meta title="Foundations/Radius" />
+
+# Radius
+
+## Border Radius
+
+Cantos arredondados. `full` = pill / círculo.
+
+<ScaleGrid
+  prefix="sds-border-radius-"
+  render={(value) => (
+    <div
+      className="border border-border-soft bg-background-soft"
+      style={{ width: "64px", height: "40px", borderRadius: value }}
+    />
+  )}
+/>
+
+## Border Width
+
+<ScaleGrid
+  prefix="sds-border-width-"
+  render={(value) => (
+    <div
+      className="bg-background"
+      style={{ width: "160px", height: "20px", border: `${value} solid var(--sds-color-accent-primary-base)` }}
+    />
+  )}
+/>

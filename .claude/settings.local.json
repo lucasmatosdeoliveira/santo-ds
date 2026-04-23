@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(claude mcp *)",
+      "mcp__2c3f0219-2e79-4382-b2d1-d732d3f5c66b__whoami",
+      "mcp__2c3f0219-2e79-4382-b2d1-d732d3f5c66b__get_metadata",
+      "mcp__2c3f0219-2e79-4382-b2d1-d732d3f5c66b__get_libraries",
+      "mcp__2c3f0219-2e79-4382-b2d1-d732d3f5c66b__search_design_system",
+      "mcp__2c3f0219-2e79-4382-b2d1-d732d3f5c66b__get_variable_defs",
+      "mcp__2c3f0219-2e79-4382-b2d1-d732d3f5c66b__get_design_context",
+      "Bash(pnpm --version)",
+      "Bash(git --version)",
+      "Bash(gh --version)",
+      "Bash(corepack enable *)",
+      "Bash(brew --version)",
+      "Bash(node scripts/preprocess.mjs)",
+      "Bash(python3 -c ' *)",
+      "Bash(pnpm install *)",
+      "Bash(pnpm --filter @santo-ds/tokens build)",
+      "Bash(node --input-type=module -e ' *)",
+      "Bash(pnpm approve-builds *)",
+      "Bash(pnpm --filter @santo-ds/docs build)",
+      "Bash(pnpm typecheck *)",
+      "Bash(pnpm storybook *)",
+      "Bash(curl -s http://localhost:6006/index.json)",
+      "Bash(curl -s \"http://localhost:6006/index.json\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); comps=[e for e in d['entries'] if e.startswith\\('components'\\)]; print\\('\\\\n'.join\\(comps\\)\\)\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"http://localhost:6006/iframe.html?id=components-dialog--default\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"http://localhost:6006/iframe.html?id=components-combobox--default\")",
+      "Bash(gh auth *)",
+      "Read(//opt/homebrew/bin/**)",
+      "Bash(brew list *)",
+      "Bash(git init *)",
+      "Bash(git config *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
+    ]
+  }
+}
