@@ -15,8 +15,8 @@ export const inputVariants = cva(
   {
     variants: {
       size: {
-        sm: "h-12 px-3 py-2 text-base rounded-10",
-        lg: "h-14 px-3 py-2 text-base rounded-12",
+        sm: "h-48 px-12 py-8 text-base rounded-10",
+        lg: "h-56 px-12 py-8 text-base rounded-12",
       },
       invalid: {
         true: "border-danger hover:border-danger focus-visible:border-danger focus-visible:shadow-[0_0_0_3px_rgba(216,57,73,0.16)]",

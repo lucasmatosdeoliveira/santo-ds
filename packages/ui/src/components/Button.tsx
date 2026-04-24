@@ -40,9 +40,9 @@ const buttonVariants = cva(
         ].join(" "),
       },
       size: {
-        sm: "h-10 px-4 text-base rounded-8 gap-2 [&_svg]:size-4",
-        md: "h-12 px-5 text-base rounded-10 gap-2 [&_svg]:size-5",
-        lg: "h-14 px-6 text-lg rounded-12 gap-2 [&_svg]:size-5",
+        sm: "h-40 px-16 text-base rounded-8 gap-8 [&_svg]:size-16",
+        md: "h-48 px-20 text-base rounded-10 gap-8 [&_svg]:size-20",
+        lg: "h-56 px-24 text-lg rounded-12 gap-8 [&_svg]:size-20",
       },
       neutral: {
         true: "",
@@ -86,17 +86,17 @@ const buttonVariants = cva(
       {
         variant: "plain",
         size: "sm",
-        class: "px-2.5",
+        class: "px-10",
       },
       {
         variant: "plain",
         size: "md",
-        class: "px-3",
+        class: "px-12",
       },
       {
         variant: "plain",
         size: "lg",
-        class: "px-4",
+        class: "px-16",
       },
     ],
     defaultVariants: {
@@ -159,7 +159,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ) : (
       <>
         {loading ? (
-          <Spinner className="size-4" />
+          <Spinner className="size-16" />
         ) : (
           leadingIcon && <span className="inline-flex">{leadingIcon}</span>
         )}
