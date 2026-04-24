@@ -19,6 +19,12 @@ const config: StorybookConfig = {
   docs: {
     defaultName: "Docs",
   },
+  async viteFinal(config) {
+    if (process.env.STORYBOOK_BASE) {
+      config.base = process.env.STORYBOOK_BASE;
+    }
+    return config;
+  },
 };
 
 export default config;
