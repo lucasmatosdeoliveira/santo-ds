@@ -12,6 +12,7 @@
   "dependencies": {
     "@santo-ds/tokens": "workspace:*",
     "@santo-ds/ui": "workspace:*",
+    "lucide-react": "^0.468.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
