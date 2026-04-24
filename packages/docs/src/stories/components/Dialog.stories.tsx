@@ -43,7 +43,7 @@ export const Default: Story = {
           </div>
         </div>
         <DialogFooter>
-          <Button variant="ghost">Cancel</Button>
+          <Button variant="plain">Cancel</Button>
           <Button>Save</Button>
         </DialogFooter>
       </DialogContent>

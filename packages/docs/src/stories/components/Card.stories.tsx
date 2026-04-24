@@ -23,7 +23,7 @@ export const Default: Story = {
         </p>
       </CardContent>
       <CardFooter className="justify-end gap-2">
-        <Button variant="ghost">Cancel</Button>
+        <Button variant="plain">Cancel</Button>
         <Button>Renew</Button>
       </CardFooter>
     </Card>

@@ -14,7 +14,7 @@ export const Default: Story = {
   render: () => (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="secondary">Dimensions</Button>
+        <Button variant="outline">Dimensions</Button>
       </PopoverTrigger>
       <PopoverContent className="w-72">
         <div className="flex flex-col gap-3">
