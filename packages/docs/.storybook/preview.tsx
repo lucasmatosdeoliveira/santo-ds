@@ -15,12 +15,34 @@ const preview: Preview = {
         order: [
           "Introduction",
           "Foundations",
-          ["Colors", "Typography", "Spacing", "Radius", "Effects", "Opacity", "Grids"],
+          [
+            "Semantic Usage",
+            "Colors",
+            "Typography",
+            "Spacing",
+            "Radius",
+            "Effects",
+            "Opacity",
+            "Motion",
+            "States",
+            "Z-Index",
+            "Breakpoints",
+            "Density",
+            "Component Tokens",
+            "Data Viz",
+            "Grids",
+          ],
           "Components",
         ],
       },
     },
     backgrounds: { disable: true },
+    a11y: {
+      // axe-core options — fail on violations of these tags during dev/test.
+      element: "#storybook-root",
+      config: {},
+      options: { runOnly: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"] },
+    },
   },
   decorators: [
     withThemeByDataAttribute({

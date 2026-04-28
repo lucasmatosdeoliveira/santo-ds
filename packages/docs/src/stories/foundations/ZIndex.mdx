@@ -1,0 +1,30 @@
+import { Meta } from "@storybook/blocks";
+import { ScaleGrid } from "../../components/ScaleGrid";
+
+<Meta title="Foundations/Z-Index" />
+
+# Z-Index
+
+Escala nomeada para empilhamento de camadas. Sempre use o token semântico em vez de números soltos — isso evita "guerra de z-index" quando dois componentes se sobrepõem.
+
+| Token       | Valor | Use para                                                  |
+| ----------- | ----- | --------------------------------------------------------- |
+| `hide`      | -1    | esconder elemento atrás do conteúdo natural               |
+| `base`      | 0     | layer padrão, sem stacking context explícito              |
+| `raised`    | 10    | cards levemente elevados, hover states                    |
+| `dropdown`  | 1000  | menus contextuais, comboboxes                             |
+| `sticky`    | 1100  | headers e elementos sticky                                |
+| `overlay`   | 1200  | overlays que escurecem o fundo (ex: backdrop de Dialog)   |
+| `modal`     | 1300  | conteúdo de Dialog/Drawer                                 |
+| `popover`   | 1400  | popovers que aparecem por cima de modais                  |
+| `toast`     | 1500  | notificações temporárias                                  |
+| `tooltip`   | 1600  | tooltips — sempre acima de tudo                           |
+
+No Tailwind: `z-modal`, `z-tooltip`, etc.
+
+<ScaleGrid
+  prefix="sds-z-index-"
+  render={(value, name) => (
+    <div className="font-mono text-xs text-foreground-soft">{value}</div>
+  )}
+/>

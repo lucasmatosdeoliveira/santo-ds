@@ -29,6 +29,9 @@ jobs:
       - name: Build tokens
         run: pnpm tokens:build
 
+      - name: Validate token contrast (WCAG AA)
+        run: pnpm --filter @santo-ds/tokens validate:contrast
+
       - name: Typecheck UI
         run: pnpm ui:build
 

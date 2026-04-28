@@ -1,0 +1,48 @@
+import { Meta } from "@storybook/blocks";
+import { ScaleGrid } from "../../components/ScaleGrid";
+
+<Meta title="Foundations/Motion" />
+
+# Motion
+
+Tokens de duração e curvas de easing para transições. Use via Tailwind: `duration-default ease-standard`.
+
+## Quando usar cada duração
+
+- **instant (0ms)** — feedback imediato (toggles internos, sem animação visível).
+- **fast (100ms)** — micro-interações: hover, focus ring, ícone girando.
+- **default (200ms)** — padrão para transições de cor, sombra, elevação.
+- **slow (300ms)** — entradas/saídas de elementos pequenos (tooltip, popover).
+- **slower (500ms)** — modais, overlays e mudanças de layout grandes.
+
+## Curvas
+
+- **standard** — uso geral; suaviza início e fim.
+- **emphasized** — chamadas de atenção (entrada de modal).
+- **decelerate** — elementos entrando em cena.
+- **accelerate** — elementos saindo de cena.
+- **linear** — animações contínuas (loading, progress).
+
+## Durations
+
+<ScaleGrid
+  prefix="sds-motion-duration-"
+  render={(value) => (
+    <div className="flex items-center gap-2">
+      <div
+        className="size-4 rounded-full bg-accent"
+        style={{ animation: `pulse ${value} ease-in-out infinite` }}
+      />
+      <span className="font-mono text-xs text-foreground-soft">{value}</span>
+    </div>
+  )}
+/>
+
+## Easings
+
+<ScaleGrid
+  prefix="sds-motion-easing-"
+  render={(value, name) => (
+    <div className="font-mono text-xs text-foreground-soft truncate">{value}</div>
+  )}
+/>

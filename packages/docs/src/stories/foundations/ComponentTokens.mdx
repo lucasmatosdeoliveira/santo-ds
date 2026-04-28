@@ -1,0 +1,45 @@
+import { Meta } from "@storybook/blocks";
+import { TokenTable } from "../../components/TokenTable";
+
+<Meta title="Foundations/Component Tokens" />
+
+# Component Tokens
+
+Camada intermediária entre semantic e component code. Permite que designers ajustem a altura padrão de um Button (por exemplo) sem rebatizar tokens primitivos compartilhados.
+
+## Como funciona
+
+```
+primitive.size.40  →  component.button.height.sm  →  Button (h-btn-sm)
+primitive.size.48  →  component.button.height.md  →  Button (h-btn-md)
+primitive.size.56  →  component.button.height.lg  →  Button (h-btn-lg)
+```
+
+Se amanhã quiserem um botão `md` mais alto (52px), basta mexer em `component.button.height.md` — todos os botões `md` no produto se ajustam, sem precisar mudar `--sds-size-48` (que é usado em outros componentes).
+
+## Button
+
+<TokenTable prefix="sds-component-button-" />
+
+## Icon Button
+
+<TokenTable prefix="sds-component-icon-button-" />
+
+## Input
+
+<TokenTable prefix="sds-component-input-" />
+
+## Como consumir
+
+```tsx
+// Tamanho
+<button className="h-btn-md px-btn-md rounded-btn-md gap-btn">…</button>
+
+// Ícone
+<svg className="size-btn-icon-md" />
+
+// IconButton 32px
+<button className="size-icon-btn-md rounded-icon-btn-md">…</button>
+```
+
+> Quando criar tokens novos: **sempre** comece pelo nível mais alto que ainda fizer sentido. Se a regra for "botão e link compartilham mesma altura", use `component.control.height.md`. Só se diverge, vire `component.button.*`.

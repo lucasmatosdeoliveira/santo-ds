@@ -1,0 +1,60 @@
+import { Meta } from "@storybook/blocks";
+import { TokenTable } from "../../components/TokenTable";
+
+<Meta title="Foundations/States" />
+
+# Estados de interação
+
+Tokens semânticos para overlays de interação (hover, pressed, selected) e foco. Trocam de valor automaticamente entre temas — em light, são overlays escuros; em dark, claros.
+
+## Por que isso importa
+
+Antes existiam classes literais como `bg-black/[0.06]` que ficavam pretas mesmo em dark mode (resultado: o estado disabled sumia ou ficava ilegível). Os tokens `state.*` resolvem isso usando os primitivos `alpha.neutral.{dark|light}.*` por trás.
+
+## Camadas neutras
+
+Use estes para componentes neutros (botões secundários, list items, etc.).
+
+<TokenTable
+  prefix="sds-color-semantic-state-"
+  renderPreview={(_, value) => (
+    <div className="flex items-center gap-2">
+      <div className="size-6 rounded-4" style={{ backgroundColor: value }} />
+      <div className="size-6 rounded-4 ring-1 ring-border-medium" style={{ backgroundColor: "transparent", boxShadow: `inset 0 0 0 100px ${value}` }} />
+    </div>
+  )}
+/>
+
+## Camadas accent
+
+Para variantes que usam a cor de marca (botão tonal, link hover sobre superfície clara).
+
+<TokenTable
+  prefix="sds-color-semantic-accent-state-"
+  renderPreview={(_, value) => (
+    <div className="size-6 rounded-4" style={{ backgroundColor: value }} />
+  )}
+/>
+
+## Foco
+
+A largura/offset do anel de foco e a cor de destaque para erros.
+
+<TokenTable prefix="sds-state-focus-" />
+
+## Como compor estados
+
+```tsx
+<button
+  className="
+    bg-background
+    hover:bg-state-hover
+    active:bg-state-pressed
+    aria-selected:bg-state-selected
+    disabled:bg-state-disabled
+    focus-visible:shadow-focus-accent
+  "
+/>
+```
+
+Nunca use `bg-black/[X]` ou `bg-white/[X]` em componentes — esses literais quebram em dark mode.

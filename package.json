@@ -9,13 +9,18 @@
   },
   "scripts": {
     "tokens:build": "pnpm --filter @santo-ds/tokens build",
+    "tokens:validate": "pnpm --filter @santo-ds/tokens validate:contrast",
     "ui:build": "pnpm --filter @santo-ds/ui build",
     "storybook": "pnpm --filter @santo-ds/docs storybook",
     "storybook:build": "pnpm --filter @santo-ds/docs build",
     "build": "pnpm -r build",
-    "clean": "pnpm -r exec rm -rf dist node_modules .turbo"
+    "clean": "pnpm -r exec rm -rf dist node_modules .turbo",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "pnpm build && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.10",
     "typescript": "^5.6.3",
     "prettier": "^3.3.3"
   },

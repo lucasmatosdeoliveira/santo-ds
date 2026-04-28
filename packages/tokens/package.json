@@ -22,6 +22,7 @@
   "scripts": {
     "preprocess": "node scripts/preprocess.mjs",
     "build": "pnpm preprocess && node scripts/build.mjs",
+    "validate:contrast": "node scripts/validate-contrast.mjs",
     "watch": "node scripts/build.mjs --watch"
   },
   "dependencies": {

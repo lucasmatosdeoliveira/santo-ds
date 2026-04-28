@@ -1,0 +1,65 @@
+{
+  "component": {
+    "button": {
+      "height": {
+        "sm": { "type": "dimension", "value": 40 },
+        "md": { "type": "dimension", "value": 48 },
+        "lg": { "type": "dimension", "value": 56 }
+      },
+      "padding-x": {
+        "sm": { "type": "dimension", "value": 16 },
+        "md": { "type": "dimension", "value": 20 },
+        "lg": { "type": "dimension", "value": 24 }
+      },
+      "radius": {
+        "sm": { "type": "dimension", "value": 8 },
+        "md": { "type": "dimension", "value": 10 },
+        "lg": { "type": "dimension", "value": 12 }
+      },
+      "icon-size": {
+        "sm": { "type": "dimension", "value": 16 },
+        "md": { "type": "dimension", "value": 20 },
+        "lg": { "type": "dimension", "value": 20 }
+      },
+      "gap": { "type": "dimension", "value": 8 }
+    },
+    "icon-button": {
+      "size": {
+        "xs":  { "type": "dimension", "value": 24 },
+        "sm":  { "type": "dimension", "value": 28 },
+        "md":  { "type": "dimension", "value": 32 },
+        "lg":  { "type": "dimension", "value": 40 },
+        "xl":  { "type": "dimension", "value": 48 },
+        "2xl": { "type": "dimension", "value": 56 }
+      },
+      "icon-size": {
+        "xs":  { "type": "dimension", "value": 16 },
+        "sm":  { "type": "dimension", "value": 16 },
+        "md":  { "type": "dimension", "value": 20 },
+        "lg":  { "type": "dimension", "value": 20 },
+        "xl":  { "type": "dimension", "value": 24 },
+        "2xl": { "type": "dimension", "value": 24 }
+      },
+      "radius": {
+        "xs":  { "type": "dimension", "value": 6 },
+        "sm":  { "type": "dimension", "value": 6 },
+        "md":  { "type": "dimension", "value": 6 },
+        "lg":  { "type": "dimension", "value": 8 },
+        "xl":  { "type": "dimension", "value": 10 },
+        "2xl": { "type": "dimension", "value": 12 }
+      }
+    },
+    "input": {
+      "height": {
+        "sm": { "type": "dimension", "value": 48 },
+        "lg": { "type": "dimension", "value": 56 }
+      },
+      "padding-x": { "type": "dimension", "value": 12 },
+      "padding-y": { "type": "dimension", "value": 8 },
+      "radius": {
+        "sm": { "type": "dimension", "value": 10 },
+        "lg": { "type": "dimension", "value": 12 }
+      }
+    }
+  }
+}

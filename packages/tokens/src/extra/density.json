@@ -1,0 +1,19 @@
+{
+  "density": {
+    "comfortable": {
+      "scale":         { "type": "number", "value": 1 },
+      "row-min-h":     { "type": "dimension", "value": 48 },
+      "control-min-h": { "type": "dimension", "value": 48 }
+    },
+    "cozy": {
+      "scale":         { "type": "number", "value": 0.9166 },
+      "row-min-h":     { "type": "dimension", "value": 40 },
+      "control-min-h": { "type": "dimension", "value": 40 }
+    },
+    "compact": {
+      "scale":         { "type": "number", "value": 0.8333 },
+      "row-min-h":     { "type": "dimension", "value": 32 },
+      "control-min-h": { "type": "dimension", "value": 32 }
+    }
+  }
+}

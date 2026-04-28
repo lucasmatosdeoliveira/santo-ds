@@ -1,0 +1,48 @@
+name: Chromatic
+
+# Visual-regression testing via Chromatic. Requires repository secret
+# `CHROMATIC_PROJECT_TOKEN` (https://www.chromatic.com → Project → Manage).
+# Workflow is opt-in: it skips silently when the secret is unset, so forks
+# and PRs without permissions don't fail.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  chromatic:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.fork == false }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Chromatic needs full git history for baselines
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Build tokens
+        run: pnpm tokens:build
+
+      - name: Publish to Chromatic
+        if: ${{ secrets.CHROMATIC_PROJECT_TOKEN != '' }}
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          workingDir: packages/docs
+          buildScriptName: build
+          exitZeroOnChanges: true
+          onlyChanged: true

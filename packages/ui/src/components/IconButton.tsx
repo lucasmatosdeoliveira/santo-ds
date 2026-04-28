@@ -4,7 +4,8 @@ import { cn } from "../lib/utils";
 
 export const iconButtonVariants = cva(
   [
-    "inline-flex items-center justify-center transition-colors",
+    "inline-flex items-center justify-center",
+    "transition-colors duration-default ease-standard",
     "focus-visible:outline-none focus-visible:shadow-focus-accent",
     "disabled:pointer-events-none",
     "[&_svg]:shrink-0",
@@ -13,38 +14,38 @@ export const iconButtonVariants = cva(
     variants: {
       variant: {
         primary: [
-          "bg-accent text-foreground-inversed",
+          "bg-accent text-foreground-on-accent",
           "hover:bg-accent-dark active:bg-accent-darker",
-          "disabled:bg-black/[0.06] disabled:text-foreground/40",
+          "disabled:bg-state-disabled disabled:text-foreground-disabled",
         ].join(" "),
         outline: [
-          "bg-transparent border border-accent/30 text-accent",
-          "hover:bg-accent/[0.04] active:bg-accent/[0.08]",
-          "disabled:bg-black/[0.06] disabled:border-transparent disabled:text-foreground/40",
+          "bg-transparent border border-accent-a24 text-accent",
+          "hover:bg-accent-state-hover active:bg-accent-state-pressed",
+          "disabled:bg-state-disabled disabled:border-transparent disabled:text-foreground-disabled",
         ].join(" "),
         tonal: [
-          "bg-accent/10 text-accent",
-          "hover:bg-accent/[0.16] active:bg-accent/20",
-          "disabled:bg-black/[0.06] disabled:text-foreground/40",
+          "bg-accent-state-subtle text-accent",
+          "hover:bg-accent-state-hover active:bg-accent-state-pressed",
+          "disabled:bg-state-disabled disabled:text-foreground-disabled",
         ].join(" "),
         elevated: [
           "bg-background text-accent shadow-sm",
-          "hover:bg-accent-lightest active:bg-accent/[0.08]",
-          "disabled:bg-black/[0.06] disabled:shadow-none disabled:text-foreground/40",
+          "hover:bg-background-accent-lightest active:bg-accent-state-pressed",
+          "disabled:bg-state-disabled disabled:shadow-none disabled:text-foreground-disabled",
         ].join(" "),
         plain: [
           "bg-transparent text-accent",
-          "hover:bg-accent/[0.04] active:bg-accent/[0.08]",
-          "disabled:text-foreground/40",
+          "hover:bg-accent-state-hover active:bg-accent-state-pressed",
+          "disabled:text-foreground-disabled",
         ].join(" "),
       },
       size: {
-        xs: "size-24 rounded-6 [&_svg]:size-16",
-        sm: "size-28 rounded-6 [&_svg]:size-16",
-        md: "size-32 rounded-6 [&_svg]:size-20",
-        lg: "size-40 rounded-8 [&_svg]:size-20",
-        xl: "size-48 rounded-10 [&_svg]:size-24",
-        "2xl": "size-56 rounded-12 [&_svg]:size-24",
+        xs: "size-icon-btn-xs rounded-icon-btn-xs [&_svg]:size-icon-btn-icon-xs",
+        sm: "size-icon-btn-sm rounded-icon-btn-sm [&_svg]:size-icon-btn-icon-sm",
+        md: "size-icon-btn-md rounded-icon-btn-md [&_svg]:size-icon-btn-icon-md",
+        lg: "size-icon-btn-lg rounded-icon-btn-lg [&_svg]:size-icon-btn-icon-lg",
+        xl: "size-icon-btn-xl rounded-icon-btn-xl [&_svg]:size-icon-btn-icon-xl",
+        "2xl": "size-icon-btn-2xl rounded-icon-btn-2xl [&_svg]:size-icon-btn-icon-2xl",
       },
       neutral: { true: "", false: "" },
     },
@@ -57,26 +58,22 @@ export const iconButtonVariants = cva(
       {
         variant: "outline",
         neutral: true,
-        class:
-          "border-border text-foreground hover:bg-background-soft active:bg-black/[0.08]",
+        class: "border-border-medium text-foreground hover:bg-state-hover active:bg-state-pressed",
       },
       {
         variant: "tonal",
         neutral: true,
-        class:
-          "bg-background-soft text-foreground hover:bg-black/[0.08] active:bg-black/[0.12]",
+        class: "bg-background-soft text-foreground hover:bg-state-pressed active:bg-state-selected",
       },
       {
         variant: "elevated",
         neutral: true,
-        class:
-          "text-foreground hover:bg-background-soft active:bg-black/[0.08]",
+        class: "text-foreground hover:bg-background-soft active:bg-state-pressed",
       },
       {
         variant: "plain",
         neutral: true,
-        class:
-          "text-foreground hover:bg-background-soft active:bg-black/[0.08]",
+        class: "text-foreground hover:bg-state-hover active:bg-state-pressed",
       },
     ],
     defaultVariants: { variant: "tonal", size: "lg", neutral: false },

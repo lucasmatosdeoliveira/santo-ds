@@ -72,6 +72,7 @@ export { Slider } from "./components/Slider";
 export { SocialButton, type SocialButtonProps } from "./components/SocialButton";
 export { Switch } from "./components/Switch";
 export { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/Tabs";
+export { Text, type TextProps, type TextVariant } from "./components/Text";
 export { Textarea, type TextareaProps } from "./components/Textarea";
 export {
   Toast,

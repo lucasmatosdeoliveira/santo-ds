@@ -1,0 +1,11 @@
+{
+  "state": {
+    "focus": {
+      "ring-width":  { "type": "dimension", "value": 3 },
+      "ring-offset": { "type": "dimension", "value": 2 }
+    },
+    "disabled": {
+      "opacity": { "type": "dimension", "value": 40 }
+    }
+  }
+}

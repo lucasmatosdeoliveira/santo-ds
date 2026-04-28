@@ -1,0 +1,51 @@
+import { Meta } from "@storybook/blocks";
+import { SwatchGrid } from "../../components/SwatchGrid";
+
+<Meta title="Foundations/Data Viz" />
+
+# Data Viz
+
+Paletas para gráficos. Diferente das paletas semânticas (que mudam por tema/role), estas são **categóricas**: cada cor distingue uma série, e a ordem importa.
+
+## Categórica (qualitativa)
+
+Use quando as séries não têm ordenação natural — ex: vendas por região, comparação de produtos.
+
+<SwatchGrid prefix="sds-dataviz-categorical-" />
+
+> Sempre passe pelas 8 antes de repetir. Se precisar de mais de 8, considere agrupar séries menores em "outros".
+
+## Sequencial (quantitativa)
+
+Use para uma única dimensão ordenada — ex: heatmap de intensidade, ramp de temperatura.
+
+### Blue
+
+<SwatchGrid prefix="sds-dataviz-sequential-blue-" />
+
+### Green
+
+<SwatchGrid prefix="sds-dataviz-sequential-green-" />
+
+### Neutral
+
+<SwatchGrid prefix="sds-dataviz-sequential-neutral-" />
+
+## Divergente
+
+Use quando há um centro neutro com desvios em ambos os lados — ex: ganho/perda, score relativo a baseline.
+
+<SwatchGrid prefix="sds-dataviz-diverging-blue-red-" />
+
+## No código
+
+```tsx
+import { tokens } from "@santo-ds/tokens";
+
+const series = data.map((d, i) => ({
+  ...d,
+  color: tokens[`sds-dataviz-categorical-${(i % 8) + 1}`],
+}));
+```
+
+> Em recharts/visx use as variáveis CSS (`var(--sds-dataviz-categorical-1)`) em vez do JS — assim a paleta acompanha o tema se um dia for adaptada para dark.
