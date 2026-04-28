@@ -1,0 +1,28 @@
+import { Meta } from "@storybook/blocks";
+import { ScaleGrid } from "../../components/ScaleGrid";
+
+<Meta title="Foundations/Breakpoints" />
+
+# Breakpoints
+
+Pontos de quebra responsivos. Mapeiam diretamente nas screen utilities do Tailwind: `sm:`, `md:`, `lg:`, `xl:`, `2xl:`.
+
+| Token | Valor   | Mobile-first                                    |
+| ----- | ------- | ----------------------------------------------- |
+| `xs`  | 0       | base (< 640px) — telefones em retrato           |
+| `sm`  | 640px   | telefones grandes / phablets                    |
+| `md`  | 768px   | tablets em retrato                              |
+| `lg`  | 1024px  | tablets em paisagem / laptops                   |
+| `xl`  | 1280px  | desktops                                        |
+| `2xl` | 1536px  | telas largas                                    |
+
+Containers (largura máxima de conteúdo centralizado):
+
+<ScaleGrid
+  prefix="sds-container-"
+  render={(value, name) => (
+    <div className="font-mono text-xs text-foreground-soft">{value}</div>
+  )}
+/>
+
+> Use breakpoints via classes Tailwind (`md:flex-row`) — não importe os valores diretamente, exceto em casos de JS responsivo (matchMedia, ResizeObserver).

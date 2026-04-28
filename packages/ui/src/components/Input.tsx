@@ -4,28 +4,27 @@ import { cn } from "../lib/utils";
 
 export const inputVariants = cva(
   [
-    "flex w-full bg-background text-foreground transition-colors",
+    "flex w-full bg-background text-foreground",
+    "transition-colors duration-default ease-standard",
     "placeholder:text-foreground-soft",
-    "focus-visible:outline-none focus-visible:border-foreground/60 focus-visible:shadow-focus-accent",
-    "hover:border-foreground/60",
-    "disabled:bg-black/[0.06] disabled:border-transparent disabled:text-foreground/40 disabled:cursor-not-allowed disabled:placeholder:text-foreground/40",
-    "read-only:bg-transparent read-only:hover:border-border read-only:focus-visible:border-border read-only:focus-visible:shadow-none",
+    "focus-visible:outline-none focus-visible:border-foreground-soft focus-visible:shadow-focus-accent",
+    "hover:border-foreground-soft",
+    "disabled:bg-state-disabled disabled:border-transparent disabled:text-foreground-disabled disabled:cursor-not-allowed disabled:placeholder:text-foreground-disabled",
+    "read-only:bg-transparent read-only:hover:border-border-medium read-only:focus-visible:border-border-medium read-only:focus-visible:shadow-none",
     "file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground",
   ].join(" "),
   {
     variants: {
       size: {
-        sm: "h-48 px-12 py-8 text-base rounded-10",
-        lg: "h-56 px-12 py-8 text-base rounded-12",
+        sm: "h-input-sm px-input rounded-input-sm text-base",
+        lg: "h-input-lg px-input rounded-input-lg text-base",
       },
       invalid: {
-        true: "border-danger hover:border-danger focus-visible:border-danger focus-visible:shadow-[0_0_0_3px_rgba(216,57,73,0.16)]",
-        false: "border border-foreground/[0.16]",
+        true: "border-danger hover:border-danger focus-visible:border-danger focus-visible:shadow-focus-danger",
+        false: "border border-border-medium",
       },
     },
-    compoundVariants: [
-      { invalid: true, class: "border" },
-    ],
+    compoundVariants: [{ invalid: true, class: "border" }],
     defaultVariants: { size: "sm", invalid: false },
   },
 );

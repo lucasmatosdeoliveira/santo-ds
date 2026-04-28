@@ -1,0 +1,76 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Foundations/Semantic Usage" />
+
+# Como escolher um token
+
+Guia rápido de quando usar cada camada. Quando em dúvida, prefira **semantic** sobre **primitive** — isso preserva o comportamento de tema e centraliza ajustes futuros.
+
+## Hierarquia
+
+```
+primitive  →  accent  →  semantic  →  component
+   |            |            |            |
+  cor crua    família     papel/uso    componente
+  (#0b0b0a)  (primary,    (font.main,  (button.h-md)
+              danger…)     bg.soft…)
+```
+
+**Use primitive** apenas em:
+- Foundation docs / paletas de cor.
+- Data viz (paletas categóricas).
+- Casos onde o valor não muda entre temas (assinaturas, logos).
+
+**Use accent** quando precisa de uma família semântica (sucesso/erro/aviso) sem se preocupar com "qual papel" — ex: badge de status.
+
+**Use semantic** sempre que estiver construindo UI de produto. Ele é o contrato do design system com o tema (light/dark) e o branding (primary/etc).
+
+**Use component** para sizing/spacing intra-componente. A regra é: se um valor é específico de um componente (altura do button, padding interno do input), use o component token.
+
+## Mapa rápido por intenção
+
+| Intenção                                  | Token                                     | Tailwind                  |
+| ----------------------------------------- | ----------------------------------------- | ------------------------- |
+| Texto de leitura, body                    | `font.default.main`                       | `text-foreground`         |
+| Texto secundário, caption                 | `font.default.soft`                       | `text-foreground-soft`    |
+| Texto desabilitado                        | `font.default.disabled`                   | `text-foreground-disabled`|
+| Texto sobre botão primary                 | `font.on-accent.main`                     | `text-foreground-on-accent` |
+| Link / texto destacado                    | `font.default.accent`                     | `text-foreground-accent`  |
+| Background de página                      | `background.default.main`                 | `bg-background`           |
+| Card / superfície elevada                 | `background.default.soft`                 | `bg-background-soft`      |
+| Botão primary fill                        | `background.default.accent`               | `bg-accent`               |
+| Border padrão de input                    | `border.default.medium`                   | `border-border-medium`    |
+| Border de divisor                         | `border.default.soft`                     | `border-border-soft`      |
+| Hover de superfície neutra                | `state.hover`                             | `bg-state-hover`          |
+| Pressed de superfície neutra              | `state.pressed`                           | `bg-state-pressed`        |
+| Hover de botão accent (tonal/plain)       | `accent-state.hover`                      | `bg-accent-state-hover`   |
+| Background tonal de accent (resting)      | `accent-state.subtle`                     | `bg-accent-state-subtle`  |
+| Anel de foco padrão                       | `effect.focus.accent`                     | `shadow-focus-accent`     |
+| Anel de foco em campo inválido            | `effect.focus.danger`                     | `shadow-focus-danger`     |
+
+## Anti-patterns
+
+### `bg-black/[0.06]` para disabled
+
+Quebra em dark mode (continua preto sobre fundo escuro). Use `bg-state-disabled`.
+
+### `bg-accent/[0.04]` para hover
+
+Quebra a primeira vez que o brand muda. Use `bg-accent-state-hover` — a alpha está embutida no token.
+
+### `text-foreground-inversed` em botão primary
+
+Em dark mode, `font.inversed` é texto **escuro** (correto sobre superfície inversed branca). Mas o background do botão primary é `accent.dark` (azul escuro), então texto escuro fica ilegível. Use `text-foreground-on-accent` (sempre claro).
+
+### Importar tokens diretamente para sizing
+
+```tsx
+// ❌ não
+import { tokens } from "@santo-ds/tokens";
+<div style={{ height: tokens["sds-size-48"] }} />
+
+// ✅ sim
+<div className="h-btn-md" />
+```
+
+A camada Tailwind já mapeia tokens em utilities; importar direto perde tree-shaking e troca de tema.

@@ -1,0 +1,17 @@
+{
+  "breakpoint": {
+    "xs": { "type": "dimension", "value": 0 },
+    "sm": { "type": "dimension", "value": 640 },
+    "md": { "type": "dimension", "value": 768 },
+    "lg": { "type": "dimension", "value": 1024 },
+    "xl": { "type": "dimension", "value": 1280 },
+    "2xl": { "type": "dimension", "value": 1536 }
+  },
+  "container": {
+    "sm": { "type": "dimension", "value": 640 },
+    "md": { "type": "dimension", "value": 768 },
+    "lg": { "type": "dimension", "value": 1024 },
+    "xl": { "type": "dimension", "value": 1280 },
+    "2xl": { "type": "dimension", "value": 1440 }
+  }
+}

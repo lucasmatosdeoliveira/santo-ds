@@ -1,0 +1,34 @@
+import { Meta } from "@storybook/blocks";
+import { ScaleGrid } from "../../components/ScaleGrid";
+
+<Meta title="Foundations/Density" />
+
+# Density
+
+Modificadores de densidade para superfícies que precisam de versões mais compactas (tabelas, listas longas, dashboards de monitoramento).
+
+## Três modos
+
+- **comfortable** — padrão. Gera componentes maiores, fáceis de tocar (mobile-first).
+- **cozy** — médio. Reduz altura/padding em ~10%.
+- **compact** — máximo aproveitamento de espaço (~17% menor). Use em tabelas densas e ferramentas profissionais.
+
+## Tokens
+
+<ScaleGrid
+  prefix="sds-density-"
+  render={(value, name) => (
+    <div className="font-mono text-xs text-foreground-soft">{value}</div>
+  )}
+/>
+
+## Como aplicar
+
+Densidade ainda não é controlada por um modo CSS global (como light/dark). Para superfícies densas, use tokens absolutos:
+
+```tsx
+// Tabela densa
+<tr className="h-density-compact-row-min-h">…</tr>
+```
+
+> Roadmap: adicionar um data-attribute `data-density="compact"` que reescreve as variáveis de altura mínima em containers descendentes — análogo a como `data-theme="dark"` funciona hoje.

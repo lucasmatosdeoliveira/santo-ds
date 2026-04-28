@@ -2,45 +2,208 @@ import { Meta } from "@storybook/blocks";
 
 <Meta title="Introduction" />
 
-# SantoDS
+<div
+  style={{
+    padding: "32px 0 24px",
+    borderBottom: "1px solid #E5E5E5",
+    marginBottom: 32,
+  }}
+>
+  <div
+    style={{
+      display: "inline-flex",
+      alignItems: "center",
+      gap: 8,
+      padding: "4px 10px",
+      borderRadius: 999,
+      background: "rgba(43, 77, 247, 0.08)",
+      color: "#2B4DF7",
+      fontSize: 12,
+      fontWeight: 500,
+      letterSpacing: 0.4,
+      textTransform: "uppercase",
+      marginBottom: 12,
+    }}
+  >
+    Design System
+  </div>
+  <h1 style={{ fontSize: 40, fontWeight: 700, margin: 0, lineHeight: 1.1 }}>
+    SantoDS
+  </h1>
+  <p style={{ fontSize: 16, color: "#525252", margin: "12px 0 0", maxWidth: 640 }}>
+    A token-driven design system for product teams — built on top of Figma
+    primitives, Style&nbsp;Dictionary, Tailwind v3 and Radix&nbsp;UI.
+  </p>
+</div>
 
-Design system gerado a partir de variables do Figma, com pipeline via Style Dictionary e
-documentação viva no Storybook.
+## What's inside
 
-## Como está organizado
+<div
+  style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+    gap: 16,
+    margin: "16px 0 32px",
+  }}
+>
+  <div
+    style={{
+      padding: 16,
+      border: "1px solid #E5E5E5",
+      borderRadius: 10,
+      background: "#FFFFFF",
+    }}
+  >
+    <div style={{ fontWeight: 600, fontSize: 14, marginBottom: 4 }}>Foundations</div>
+    <div style={{ fontSize: 13, color: "#737373", lineHeight: 1.5 }}>
+      Color, type, motion, spacing, density, breakpoints, z-index…
+    </div>
+  </div>
+  <div
+    style={{
+      padding: 16,
+      border: "1px solid #E5E5E5",
+      borderRadius: 10,
+      background: "#FFFFFF",
+    }}
+  >
+    <div style={{ fontWeight: 600, fontSize: 14, marginBottom: 4 }}>Components</div>
+    <div style={{ fontSize: 13, color: "#737373", lineHeight: 1.5 }}>
+      29 production-ready React components, ARIA-compliant.
+    </div>
+  </div>
+  <div
+    style={{
+      padding: 16,
+      border: "1px solid #E5E5E5",
+      borderRadius: 10,
+      background: "#FFFFFF",
+    }}
+  >
+    <div style={{ fontWeight: 600, fontSize: 14, marginBottom: 4 }}>Tokens</div>
+    <div style={{ fontSize: 13, color: "#737373", lineHeight: 1.5 }}>
+      W3C DTCG JSON → CSS variables, JS/TS, Tailwind preset.
+    </div>
+  </div>
+  <div
+    style={{
+      padding: 16,
+      border: "1px solid #E5E5E5",
+      borderRadius: 10,
+      background: "#FFFFFF",
+    }}
+  >
+    <div style={{ fontWeight: 600, fontSize: 14, marginBottom: 4 }}>Theming</div>
+    <div style={{ fontSize: 13, color: "#737373", lineHeight: 1.5 }}>
+      Light & dark via the <code>data-theme</code> attribute.
+    </div>
+  </div>
+</div>
 
-| Pacote | Descrição |
-| --- | --- |
-| `@santo-ds/tokens` | Source-of-truth dos design tokens (extraídos do Figma) em CSS, JS/TS e Tailwind preset. |
-| `@santo-ds/ui` | Componentes React com base shadcn/Radix, estilizados com os tokens. |
-| `@santo-ds/docs` | Este Storybook. |
+## How this Storybook is organised
 
-## Fluxo de atualização de tokens
+- **Foundations** — the design language. Color roles, type scale, motion
+  curves, spacing, radius, breakpoints, density, z-index, state overlays,
+  data-viz palettes, and the rationale behind each token layer.
+- **Components** — the React building blocks, grouped by intent:
+  - **Actions** — Button, IconButton, SocialButton, Toggle, Chip
+  - **Inputs** — Field, Input, Textarea, PasswordField, DateField,
+    Checkbox, Switch, RadioGroup, Select, Combobox, Slider
+  - **Display** — Text, Avatar, Badge, Card, Separator, Skeleton, Progress
+  - **Feedback** — Alert
+  - **Overlay** — Dialog, Popover, Tooltip, DropdownMenu
+  - **Navigation** — Tabs, Accordion
 
-1. Edite as Variables no arquivo Figma **Santo DS — Foundation**.
-2. Exporte via plugin **Design Tokens** (Lukas Oppermann) → salve em `design-tokens.json` na raiz.
-3. `pnpm tokens:build` regenera CSS, JS, TS e preset Tailwind.
-4. Commite as mudanças — consumidores (`@santo-ds/ui`, `@santo-ds/docs`) puxam via workspace.
+Every component page has a **Playground** story with full controls, plus
+showcase stories for the most common use-cases.
+
+## Architecture
+
+```
+@santo-ds/tokens   →  Figma variables → Style Dictionary → CSS / JS / TS / Tailwind preset
+@santo-ds/ui       →  React components (Radix primitives + class-variance-authority)
+@santo-ds/docs     →  This Storybook
+```
+
+Tokens flow in a single direction: **Figma → JSON → CSS variables →
+Tailwind utilities → React components**. Every component variant resolves
+to a token, so a single token change propagates to every consumer.
+
+## Quick start
+
+```bash
+pnpm install
+pnpm --filter @santo-ds/tokens build
+pnpm --filter @santo-ds/docs storybook   # opens on http://localhost:6006
+```
+
+```tsx
+import { Button, Card, CardContent, Text } from "@santo-ds/ui";
+import "@santo-ds/tokens/css";
+
+export function Welcome() {
+  return (
+    <Card className="w-80">
+      <CardContent className="flex flex-col gap-3 p-6">
+        <Text variant="title-lg">Welcome to SantoDS</Text>
+        <Text variant="paragraph-md">
+          Tokens, components and theming — already wired together.
+        </Text>
+        <Button>Get started</Button>
+      </CardContent>
+    </Card>
+  );
+}
+```
 
 ## Theming
 
-A troca light/dark acontece via `data-theme` no elemento root:
+Toggle the theme with the **paint-roller icon** in the toolbar above —
+it switches the `data-theme` attribute on the preview iframe. In your
+own app, set `data-theme="dark"` on `<html>` (or any ancestor) and the
+tokens swap automatically.
 
 ```html
 <html data-theme="dark">
-  ...
+  <!-- everything below resolves to dark-mode tokens -->
 </html>
 ```
 
-Tokens semânticos (`--sds-color-semantic-*`) têm valores diferentes em `:root` (light) e
-`[data-theme="dark"]`. Tokens base (primitive, accent, sizing, radius, etc.) são mode-agnósticos.
+## Accessibility
 
-## Convenção de nomes
+The **a11y** panel runs `axe-core` on every story against
+`wcag2a / wcag2aa / wcag21a / wcag21aa`. Foundation contrast pairs are
+validated in CI by `pnpm --filter @santo-ds/tokens validate:contrast` —
+the build fails if any role pair drops below WCAG AA.
 
-Todas as CSS vars seguem o padrão `--sds-<categoria>-<subcategoria>-<variante>`:
+## Conventions
+
+- All components are **forward-ref** and accept `className`. Tailwind
+  utilities and the `cn()` helper compose cleanly with the variants.
+- All variants are powered by **class-variance-authority** (`cva()`),
+  so `<Button variant="primary" size="lg" />` types match the runtime.
+- Sizing reads **component tokens** (`h-btn-md`, `size-icon-btn-lg`,
+  `rounded-input-sm`), not raw spacing scales — change the token, every
+  consumer updates.
+- Composite typography is applied via the auto-generated
+  `.sds-text-{variant}` utility classes (driven by the `Text`
+  component).
+
+## Token update flow
+
+1. Edit Figma variables in **Santo DS — Foundation**.
+2. Export via the **Design Tokens** plugin → save as
+   `packages/tokens/design-tokens.json`.
+3. Run `pnpm tokens:build` — Style Dictionary regenerates CSS, JS, TS
+   and the Tailwind preset.
+4. Commit. Consumers (`@santo-ds/ui`, `@santo-ds/docs`) pick the change
+   up via the pnpm workspace.
+
+## Naming
+
+Every CSS variable follows `--sds-<category>-<subcategory>-<variant>`:
 
 - `--sds-color-primitive-neutral-500`
-- `--sds-color-accent-primary-base`
 - `--sds-color-semantic-background-default-soft`
 - `--sds-size-16`
 - `--sds-border-radius-8`

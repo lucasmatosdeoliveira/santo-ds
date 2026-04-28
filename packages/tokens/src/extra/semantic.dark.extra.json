@@ -1,0 +1,33 @@
+{
+  "color": {
+    "semantic": {
+      "state": {
+        "hover":    { "type": "color", "value": "{color.primitive.alpha.neutral.light.6}" },
+        "pressed":  { "type": "color", "value": "{color.primitive.alpha.neutral.light.10}" },
+        "selected": { "type": "color", "value": "{color.primitive.alpha.neutral.light.16}" },
+        "focused":  { "type": "color", "value": "{color.primitive.alpha.neutral.light.24}" },
+        "disabled": { "type": "color", "value": "{color.primitive.alpha.neutral.light.6}" }
+      },
+      "accent-state": {
+        "hover":    { "type": "color", "value": "{color.accent.primary.a16}" },
+        "pressed":  { "type": "color", "value": "{color.accent.primary.a24}" },
+        "selected": { "type": "color", "value": "{color.accent.primary.a32}" },
+        "subtle":   { "type": "color", "value": "{color.accent.primary.a16}" }
+      },
+      "danger-state": {
+        "ring": { "type": "color", "value": "{color.accent.danger.base}" }
+      },
+      "font": {
+        "on-accent": {
+          "main": { "type": "color", "value": "{color.primitive.alpha.neutral.light.96}" },
+          "soft": { "type": "color", "value": "{color.primitive.alpha.neutral.light.72}" }
+        }
+      },
+      "icon": {
+        "on-accent": {
+          "main": { "type": "color", "value": "{color.primitive.alpha.neutral.light.96}" }
+        }
+      }
+    }
+  }
+}

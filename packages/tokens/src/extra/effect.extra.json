@@ -1,0 +1,13 @@
+{
+  "effect": {
+    "focus": {
+      "danger": {
+        "type": "shadow",
+        "value": [
+          { "shadowType": "dropShadow", "radius": 0, "color": "#d83949a3", "offsetX": 0, "offsetY": 0, "spread": 4 },
+          { "shadowType": "dropShadow", "radius": 0, "color": "#ffffffff", "offsetX": 0, "offsetY": 0, "spread": 2 }
+        ]
+      }
+    }
+  }
+}

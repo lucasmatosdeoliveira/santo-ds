@@ -5,7 +5,8 @@ import { cn } from "../lib/utils";
 
 const buttonVariants = cva(
   [
-    "relative inline-flex items-center justify-center whitespace-nowrap font-medium transition-colors",
+    "relative inline-flex items-center justify-center whitespace-nowrap font-medium",
+    "transition-colors duration-default ease-standard",
     "focus-visible:outline-none focus-visible:shadow-focus-accent",
     "disabled:pointer-events-none",
     "[&_svg]:shrink-0",
@@ -14,44 +15,38 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary: [
-          "bg-accent text-foreground-inversed",
+          "bg-accent text-foreground-on-accent",
           "hover:bg-accent-dark active:bg-accent-darker",
-          "disabled:bg-black/[0.06] disabled:text-foreground/40",
+          "disabled:bg-state-disabled disabled:text-foreground-disabled",
         ].join(" "),
         outline: [
-          "bg-transparent border border-accent/30 text-accent",
-          "hover:bg-accent/[0.04] active:bg-accent/[0.08]",
-          "disabled:bg-black/[0.06] disabled:border-transparent disabled:text-foreground/40",
+          "bg-transparent border border-accent-a24 text-accent",
+          "hover:bg-accent-state-hover active:bg-accent-state-pressed",
+          "disabled:bg-state-disabled disabled:border-transparent disabled:text-foreground-disabled",
         ].join(" "),
         tonal: [
-          "bg-accent/10 text-accent",
-          "hover:bg-accent/[0.16] active:bg-accent/20",
-          "disabled:bg-black/[0.06] disabled:text-foreground/40",
+          "bg-accent-state-subtle text-accent",
+          "hover:bg-accent-state-hover active:bg-accent-state-pressed",
+          "disabled:bg-state-disabled disabled:text-foreground-disabled",
         ].join(" "),
         elevated: [
           "bg-background text-accent shadow-sm",
-          "hover:bg-accent-lightest active:bg-accent/[0.08]",
-          "disabled:bg-black/[0.06] disabled:shadow-none disabled:text-foreground/40",
+          "hover:bg-background-accent-lightest active:bg-accent-state-pressed",
+          "disabled:bg-state-disabled disabled:shadow-none disabled:text-foreground-disabled",
         ].join(" "),
         plain: [
           "bg-transparent text-accent",
-          "hover:bg-accent/[0.04] active:bg-accent/[0.08]",
-          "disabled:text-foreground/40",
+          "hover:bg-accent-state-hover active:bg-accent-state-pressed",
+          "disabled:text-foreground-disabled",
         ].join(" "),
       },
       size: {
-        sm: "h-40 px-16 text-base rounded-8 gap-8 [&_svg]:size-16",
-        md: "h-48 px-20 text-base rounded-10 gap-8 [&_svg]:size-20",
-        lg: "h-56 px-24 text-lg rounded-12 gap-8 [&_svg]:size-20",
+        sm: "h-btn-sm px-btn-sm rounded-btn-sm gap-btn text-base [&_svg]:size-btn-icon-sm",
+        md: "h-btn-md px-btn-md rounded-btn-md gap-btn text-base [&_svg]:size-btn-icon-md",
+        lg: "h-btn-lg px-btn-lg rounded-btn-lg gap-btn text-lg [&_svg]:size-btn-icon-lg",
       },
-      neutral: {
-        true: "",
-        false: "",
-      },
-      loading: {
-        true: "cursor-wait",
-        false: "",
-      },
+      neutral: { true: "", false: "" },
+      loading: { true: "cursor-wait", false: "" },
     },
     compoundVariants: [
       {
@@ -62,42 +57,26 @@ const buttonVariants = cva(
       {
         variant: "outline",
         neutral: true,
-        class:
-          "border-border text-foreground hover:bg-background-soft active:bg-black/[0.08]",
+        class: "border-border-medium text-foreground hover:bg-state-hover active:bg-state-pressed",
       },
       {
         variant: "tonal",
         neutral: true,
-        class:
-          "bg-background-soft text-foreground hover:bg-black/[0.08] active:bg-black/[0.12]",
+        class: "bg-background-soft text-foreground hover:bg-state-pressed active:bg-state-selected",
       },
       {
         variant: "elevated",
         neutral: true,
-        class:
-          "text-foreground hover:bg-background-soft active:bg-black/[0.08]",
+        class: "text-foreground hover:bg-background-soft active:bg-state-pressed",
       },
       {
         variant: "plain",
         neutral: true,
-        class:
-          "text-foreground hover:bg-background-soft active:bg-black/[0.08]",
+        class: "text-foreground hover:bg-state-hover active:bg-state-pressed",
       },
-      {
-        variant: "plain",
-        size: "sm",
-        class: "px-10",
-      },
-      {
-        variant: "plain",
-        size: "md",
-        class: "px-12",
-      },
-      {
-        variant: "plain",
-        size: "lg",
-        class: "px-16",
-      },
+      { variant: "plain", size: "sm", class: "px-2.5" },
+      { variant: "plain", size: "md", class: "px-3" },
+      { variant: "plain", size: "lg", class: "px-4" },
     ],
     defaultVariants: {
       variant: "primary",
@@ -159,7 +138,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ) : (
       <>
         {loading ? (
-          <Spinner className="size-16" />
+          <Spinner className="size-btn-icon-sm" />
         ) : (
           leadingIcon && <span className="inline-flex">{leadingIcon}</span>
         )}
