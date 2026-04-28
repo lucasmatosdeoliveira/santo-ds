@@ -13,20 +13,71 @@ const GitHub = () => (
   </svg>
 );
 
+const Apple = () => (
+  <svg viewBox="0 0 24 24" aria-hidden fill="currentColor">
+    <path d="M16.36 1.43c0 1.14-.42 2.21-1.1 2.97-.74.83-1.94 1.46-3 1.37-.13-1.14.46-2.31 1.1-3.02.73-.81 1.99-1.42 3-1.32Zm3.51 16.32c-.6 1.35-.89 1.95-1.65 3.14-1.07 1.65-2.58 3.71-4.45 3.73-1.66.02-2.09-1.05-4.34-1.04-2.25.01-2.72 1.06-4.39 1.04C3.18 24.6 1.74 22.7.67 21.05c-2.96-4.5-3.27-9.81-1.45-12.62 1.3-2.01 3.36-3.18 5.29-3.18 1.97 0 3.21 1.06 4.84 1.06 1.59 0 2.55-1.06 4.83-1.06 1.73 0 3.55.92 4.85 2.51-4.27 2.31-3.57 8.34.84 9.99Z" />
+  </svg>
+);
+
 const meta = {
-  title: "Components/SocialButton",
+  title: "Components/Actions/SocialButton",
   component: SocialButton,
   tags: ["autodocs"],
+  parameters: {
+    layout: "centered",
+    docs: {
+      description: {
+        component: `
+The **SocialButton** is a pre-styled OAuth provider button — a neutral
+outlined surface with a leading provider icon and a *Continue with X*
+label.
+
+### When to use
+
+- Sign-in / sign-up screens with third-party auth.
+- Connect-account flows in settings.
+
+Pass any \`<svg>\` (or icon component) as \`icon\`. Set \`provider\` to get a
+*Continue with {provider}* label automatically, or override with
+\`children\`.
+        `,
+      },
+    },
+  },
+  args: { provider: "Google" },
+  argTypes: {
+    provider: {
+      control: "text",
+      description: "Provider name. Renders as `Continue with {provider}`.",
+    },
+    children: {
+      control: "text",
+      description: "Override the auto-generated label.",
+    },
+    disabled: { control: "boolean" },
+    icon: { control: false, table: { disable: true } },
+  },
+  render: (args) => (
+    <div className="w-80">
+      <SocialButton {...args} icon={<Google />} />
+    </div>
+  ),
 } satisfies Meta<typeof SocialButton>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/** Drive every prop from the controls panel. */
+export const Playground: Story = {};
+
+/** Stack multiple providers in a sign-in flow. */
 export const Gallery: Story = {
+  parameters: { controls: { disable: true } },
   render: () => (
     <div className="flex w-80 flex-col gap-3">
       <SocialButton icon={<Google />} provider="Google" />
       <SocialButton icon={<GitHub />} provider="GitHub" />
+      <SocialButton icon={<Apple />} provider="Apple" />
     </div>
   ),
 };

@@ -1,10 +1,14 @@
 import type { Preview } from "@storybook/react";
 import { withThemeByDataAttribute } from "@storybook/addon-themes";
+import { santodsLight, santodsDark } from "./theme";
 import "../src/app.css";
 
 const preview: Preview = {
   parameters: {
+    layout: "centered",
     controls: {
+      expanded: true,
+      sort: "requiredFirst",
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/i,
@@ -12,6 +16,7 @@ const preview: Preview = {
     },
     options: {
       storySort: {
+        method: "alphabetical",
         order: [
           "Introduction",
           "Foundations",
@@ -33,8 +38,14 @@ const preview: Preview = {
             "Grids",
           ],
           "Components",
+          ["Actions", "Inputs", "Display", "Feedback", "Overlay", "Navigation"],
+          "*",
         ],
       },
+    },
+    docs: {
+      theme: santodsLight,
+      toc: { headingSelector: "h2, h3" },
     },
     backgrounds: { disable: true },
     a11y: {
@@ -52,5 +63,9 @@ const preview: Preview = {
     }),
   ],
 };
+
+// Suppress unused-import warning when the dark theme is referenced from
+// stories that flip docs.theme programmatically.
+void santodsDark;
 
 export default preview;
